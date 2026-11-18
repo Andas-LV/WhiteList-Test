@@ -27,6 +27,7 @@ class ExtractionOutcome:
     valid: bool  # False — сработал fallback, ответ LLM так и не прошёл валидацию
     attempts: int
     errors: list[str] = field(default_factory=list)  # ошибки валидации по попыткам
+    ungrounded: ExtractionResult | None = None  # ответ модели до grounding (для eval)
 
 
 @cache
@@ -81,7 +82,11 @@ def extract(text: str, llm: LLMClient, max_attempts: int = MAX_ATTEMPTS) -> Extr
             user_prompt = build_repair_prompt(text, raw, str(e))
             continue
         return ExtractionOutcome(
-            result=ground(parsed, text), valid=True, attempts=attempt, errors=errors
+            result=ground(parsed, text),
+            valid=True,
+            attempts=attempt,
+            errors=errors,
+            ungrounded=parsed,
         )
 
     return ExtractionOutcome(
