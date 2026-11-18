@@ -1,0 +1,16 @@
+{
+  "doc_type": "invoice",
+  "supplier_name": "ТОО «Caspian Cloud Services»",
+  "supplier_bin": "080140012348",
+  "doc_number": "INV-2026-0318",
+  "doc_date": "2026-11-03",
+  "currency": "USD",
+  "total_amount": 1116.50,
+  "vat_amount": 154.00,
+  "line_items": [
+    {"name": "Аренда сервера (ноябрь 2026)", "qty": 2, "price": 450.00},
+    {"name": "Резервное копирование, ТБ", "qty": 5, "price": 12.50}
+  ],
+  "field_confidence": {},
+  "warnings": []
+}

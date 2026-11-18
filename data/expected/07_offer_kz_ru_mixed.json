@@ -1,0 +1,16 @@
+{
+  "doc_type": "commercial_offer",
+  "supplier_name": "ТОО «Алтын Сапа»",
+  "supplier_bin": "120340015082",
+  "doc_number": "КП-114",
+  "doc_date": "2026-11-14",
+  "currency": "EUR",
+  "total_amount": 2850.00,
+  "vat_amount": null,
+  "line_items": [
+    {"name": "Кофемашина", "qty": 2, "price": 1250.00},
+    {"name": "Фильтр для воды", "qty": 10, "price": 35.00}
+  ],
+  "field_confidence": {},
+  "warnings": []
+}

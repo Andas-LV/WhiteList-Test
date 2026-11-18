@@ -1,0 +1,16 @@
+{
+  "doc_type": "invoice",
+  "supplier_name": "ТОО \"Шыгыс Энерго Сервис\"",
+  "supplier_bin": "100240017864",
+  "doc_number": "207",
+  "doc_date": "2026-10-23",
+  "currency": "KZT",
+  "total_amount": 75700,
+  "vat_amount": 10441.38,
+  "line_items": [
+    {"name": "Кабель ВВГ 3x2,5", "qty": 100, "price": 415},
+    {"name": "Автомат 16A", "qty": 12, "price": 2850}
+  ],
+  "field_confidence": {},
+  "warnings": ["supplier_bin: восстановлен из OCR-искажённой записи (1OO24OOl7864)"]
+}

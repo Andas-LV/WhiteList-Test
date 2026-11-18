@@ -1,0 +1,13 @@
+{
+  "doc_type": "unknown",
+  "supplier_name": null,
+  "supplier_bin": null,
+  "doc_number": "418",
+  "doc_date": "2026-11-10",
+  "currency": null,
+  "total_amount": null,
+  "vat_amount": null,
+  "line_items": [],
+  "field_confidence": {},
+  "warnings": []
+}
