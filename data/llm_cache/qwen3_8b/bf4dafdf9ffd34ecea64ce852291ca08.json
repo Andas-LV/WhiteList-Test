@@ -1,0 +1,5 @@
+{
+  "model": "qwen3:8b",
+  "user_prompt_head": "Текст документа:\n<<<\nЖШС «Көкжиек Құрылыс» / ТОО \"Кокжиек Курылыс\"\nБСН/БИН: 2l064090Ol80\nШот-фактура №  AKT-09 / 09 қазан 2026 ж.\n\nҚызмет көрсету / Оказание услуг - 1 ед. - 340 000\n\nЖалпы сомасы: Үш ж",
+  "response": "{\n\n  \"doc_type\": \"invoice\",\n  \"supplier_name\": \"ЖШС «Көкжиек Құрылыс»\",\n  \"supplier_bin\": \"210640900180\",\n  \"doc_number\": \"AKT-09\",\n  \"doc_date\": \"2026-09-09\",\n  \"currency\": \"KZT\",\n  \"total_amount\": 340000,\n  \"vat_amount\": null,\n  \"line_items\": [\n    {\n      \"name\": \"Қызмет көрсету / Оказание услуг\",\n      \"qty\": 1,\n      \"price\": 340000\n    }\n  ],\n  \"field_confidence\": {\n    \"doc_type\": 0.9,\n    \"supplier_name\": 0.8,\n    \"supplier_bin\": 0.9,\n    \"doc_number\": 0.9,\n    \"doc_date\": 0.9,\n    \"currency\": 0.9,\n    \"total_amount\": 0.8,\n    \"vat_amount\": 1.0,\n    \"line_items\": 0.9\n  },\n  \"warnings\": [\n    \"Исправлены ошибки OCR в supplier_bin (l → 1, O → 0)\",\n    \"Итоговая сумма переведена из прописного текста\"\n  ]\n}"
+}

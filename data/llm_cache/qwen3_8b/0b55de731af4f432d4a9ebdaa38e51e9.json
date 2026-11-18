@@ -1,0 +1,5 @@
+{
+  "model": "qwen3:8b",
+  "user_prompt_head": "Текст документа:\n<<<\nКОММЕРЦИЯЛЫҚ ҰСЫНЫС / КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ\n№ КП-114\n\n«Алтын Сапа» ЖШС / ТОО «Алтын Сапа»\nБСН: 120340015082\nКүні / Дата: 14 қараша 2026 ж.\n\nҚұрметті серіктестер! Уважаемые парт",
+  "response": "{\n\n  \"doc_type\": \"commercial_offer\",\n  \"supplier_name\": \"ТОО «Алтын Сапа»\",\n  \"supplier_bin\": \"120340015082\",\n  \"doc_number\": \"КП-114\",\n  \"doc_date\": \"2026-12-14\",\n  \"currency\": \"EUR\",\n  \"total_amount\": 2850.00,\n  \"vat_amount\": null,\n  \"line_items\": [\n    {\n      \"name\": \"Кофемашина\",\n      \"qty\": 2,\n      \"price\": 1250.00\n    },\n    {\n      \"name\": \"Фильтр для воды\",\n      \"qty\": 10,\n      \"price\": 35.00\n    }\n  ],\n  \"field_confidence\": {\n    \"doc_type\": 1.0,\n    \"supplier_name\": 1.0,\n    \"supplier_bin\": 1.0,\n    \"doc_number\": 1.0,\n    \"doc_date\": 1.0,\n    \"currency\": 1.0,\n    \"total_amount\": 1.0,\n    \"vat_amount\": 1.0,\n    \"line_items\": 1.0\n  },\n  \"warnings\": []\n}"
+}

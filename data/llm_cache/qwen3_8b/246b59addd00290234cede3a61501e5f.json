@@ -1,0 +1,5 @@
+{
+  "model": "qwen3:8b",
+  "user_prompt_head": "Текст документа:\n<<<\nКоммерческое предложение\nот компании «Digital Solutions»\n\nУважаемый клиент! Предлагаем Вам следующие услуги:\n- Разработка сайта — 450 000 тг\n- Техподдержка, в месяц — 60 000 тг\n\nП",
+  "response": "{\n\n  \"doc_type\": \"commercial_offer\",\n  \"supplier_name\": \"Digital Solutions\",\n  \"supplier_bin\": null,\n  \"doc_number\": null,\n  \"doc_date\": \"2026-11-05\",\n  \"currency\": \"KZT\",\n  \"total_amount\": null,\n  \"vat_amount\": null,\n  \"line_items\": [\n    {\n      \"name\": \"Разработка сайта\",\n      \"qty\": 1,\n      \"price\": 450000\n    },\n    {\n      \"name\": \"Техподдержка, в месяц\",\n      \"qty\": 1,\n      \"price\": 60000\n    }\n  ],\n  \"field_confidence\": {\n    \"doc_type\": 1.0,\n    \"supplier_name\": 1.0,\n    \"supplier_bin\": 1.0,\n    \"doc_number\": 1.0,\n    \"doc_date\": 1.0,\n    \"currency\": 1.0,\n    \"total_amount\": 1.0,\n    \"vat_amount\": 1.0,\n    \"line_items\": 1.0\n  },\n  \"warnings\": [\n    \"Итоговая сумма не указана\"\n  ]\n}"
+}

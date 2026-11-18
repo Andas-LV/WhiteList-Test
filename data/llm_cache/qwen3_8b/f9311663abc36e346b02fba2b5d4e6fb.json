@@ -1,0 +1,5 @@
+{
+  "model": "qwen3:8b",
+  "user_prompt_head": "Текст документа:\n<<<\nИП «Береке Принт»\nИИН/БИН 850312300459\nСчёт на оплату № 56 от 2 ноября 2026 г.\n\nИзготовление визиток (1000 шт.) ......... 1 заказ\nПечать баннера 3х6 м .................... 2 шт.\n\n",
+  "response": "{\n\n  \"doc_type\": \"invoice\",\n  \"supplier_name\": \"ИП «Береке Принт»\",\n  \"supplier_bin\": \"850312300459\",\n  \"doc_number\": \"56\",\n  \"doc_date\": \"2026-11-02\",\n  \"currency\": \"KZT\",\n  \"total_amount\": 247500,\n  \"vat_amount\": null,\n  \"line_items\": [],\n  \"field_confidence\": {\n    \"doc_type\": 0.9,\n    \"supplier_name\": 0.9,\n    \"supplier_bin\": 0.9,\n    \"doc_number\": 0.9,\n    \"doc_date\": 0.9,\n    \"currency\": 0.9,\n    \"total_amount\": 0.8\n  },\n  \"warnings\": [\n    \"Сумма переведена из прописного текста\",\n    \"Отсутствуют данные о количестве и цене в позициях\",\n    \"Указано 'Без НДС'\"\n  ]\n}"
+}

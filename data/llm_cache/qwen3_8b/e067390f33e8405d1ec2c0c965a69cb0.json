@@ -1,0 +1,5 @@
+{
+  "model": "qwen3:8b",
+  "user_prompt_head": "Текст документа:\n<<<\nТОО \"Алматы Трейд Компани\"\nБИН 170340021554\nСчёт на оплату № 1245 от 12.11.2026\n\nНаименование              Кол-во   Цена      Сумма\nБумага А4 80г/м2            50       2 100     ",
+  "response": "{\n\n  \"doc_type\": \"invoice\",\n  \"supplier_name\": \"ТОО \\\"Алматы Трейд Компани\\\"\",\n  \"supplier_bin\": \"170340021554\",\n  \"doc_number\": \"1245\",\n  \"doc_date\": \"2026-11-12\",\n  \"currency\": \"KZT\",\n  \"total_amount\": 186180,\n  \"vat_amount\": 25680,\n  \"line_items\": [\n    {\n      \"name\": \"Бумага А4 80г/м2\",\n      \"qty\": 50,\n      \"price\": 2100\n    },\n    {\n      \"name\": \"Картридж HP 85A\",\n      \"qty\": 3,\n      \"price\": 18500\n    }\n  ],\n  \"field_confidence\": {\n    \"doc_type\": 1,\n    \"supplier_name\": 1,\n    \"supplier_bin\": 1,\n    \"doc_number\": 1,\n    \"doc_date\": 1,\n    \"currency\": 1,\n    \"total_amount\": 1,\n    \"vat_amount\": 1\n  },\n  \"warnings\": [\n    \"Сумма позиций (160500) совпадает с итоговой суммой (186180) после учета НДС\"\n  ]\n}"
+}

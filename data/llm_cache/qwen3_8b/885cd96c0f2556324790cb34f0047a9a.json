@@ -1,0 +1,5 @@
+{
+  "model": "qwen3:8b",
+  "user_prompt_head": "Текст документа:\n<<<\nАКТ ВЫПОЛНЕННЫХ РАБОТ (ОКАЗАННЫХ УСЛУГ)\n\nИсполнитель: ИП Сейткали А.М.\nЗаказчик: ТОО «Нур Логистик», БИН 900712004588\n\nМы, нижеподписавшиеся, составили настоящий акт о том, что Ис",
+  "response": "{\n\n  \"doc_type\": \"act\",\n  \"supplier_name\": \"ИП Сейткали А.М.\",\n  \"supplier_bin\": null,\n  \"doc_number\": null,\n  \"doc_date\": null,\n  \"currency\": null,\n  \"total_amount\": null,\n  \"vat_amount\": null,\n  \"line_items\": [],\n  \"field_confidence\": {\n    \"doc_type\": 1,\n    \"supplier_name\": 1,\n    \"supplier_bin\": 0,\n    \"doc_number\": 0,\n    \"doc_date\": 0,\n    \"currency\": 0,\n    \"total_amount\": 0,\n    \"vat_amount\": 0,\n    \"line_items\": 0\n  },\n  \"warnings\": [\n    \"Отсутствует дата составления документа\",\n    \"Отсутствует номер документа\",\n    \"Итоговая сумма к оплате не указана\",\n    \"НДС не указан\",\n    \"Детали по позициям (цена, количество) не указаны\"\n  ]\n}"
+}
