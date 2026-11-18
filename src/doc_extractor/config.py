@@ -18,5 +18,5 @@ def load_settings() -> Settings:
     return Settings(
         ollama_host=os.getenv("OLLAMA_HOST", "http://localhost:11434"),
         ollama_api_key=os.getenv("OLLAMA_API_KEY") or None,
-        llm_model=os.getenv("LLM_MODEL", "gpt-oss:120b"),
+        llm_model=os.getenv("LLM_MODEL", "qwen3:8b"),
     )
