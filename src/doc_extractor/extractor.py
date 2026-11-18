@@ -30,9 +30,29 @@ class ExtractionOutcome:
     ungrounded: ExtractionResult | None = None  # ответ модели до grounding (для eval)
 
 
+def _require_all_properties(node: Any) -> None:
+    """Сделать все свойства объектов обязательными (рекурсивно, включая $defs).
+
+    pydantic не включает поля со значением по умолчанию в `required`, и при constrained
+    decoding модель такие ключи просто не выводит (в первом прогоне qwen3:8b пропускала
+    currency в 8 из 10 документов). Nullable-поля остаются nullable: модель обязана явно
+    написать null, а не молча опустить ключ.
+    """
+    if isinstance(node, dict):
+        if node.get("type") == "object" and "properties" in node:
+            node["required"] = list(node["properties"])
+        for value in node.values():
+            _require_all_properties(value)
+    elif isinstance(node, list):
+        for value in node:
+            _require_all_properties(value)
+
+
 @cache
 def output_json_schema() -> dict[str, Any]:
-    return ExtractionResult.model_json_schema()
+    schema = ExtractionResult.model_json_schema()
+    _require_all_properties(schema)
+    return schema
 
 
 def _coerce(obj: Any) -> Any:

@@ -66,3 +66,12 @@ def test_bin_with_spaces_is_normalized_before_validation() -> None:
     outcome = extract(text, ScriptedLLM(answer))
     assert outcome.attempts == 1
     assert outcome.result.supplier_bin == "210640900180"
+
+
+def test_llm_schema_requires_every_field_including_nullable() -> None:
+    from doc_extractor.extractor import output_json_schema
+
+    schema = output_json_schema()
+    assert set(schema["required"]) == set(schema["properties"])
+    item = schema["$defs"]["LineItem"]
+    assert set(item["required"]) == {"name", "qty", "price"}

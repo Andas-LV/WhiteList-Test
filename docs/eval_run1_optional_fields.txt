@@ -1,0 +1,71 @@
+Модель: qwen3:8b | документов: 10 | кеш: use
+
+  01_invoice_almaty_trade: попыток 1
+  02_offer_digital_solutions: попыток 1
+  03_kokzhiek_kz_ru_ocr: попыток 1
+  04_invoice_usd_buyer_bin: попыток 1
+  05_act_missing_fields: попыток 1
+  06_invoice_amount_in_words: попыток 1
+  07_offer_kz_ru_mixed: попыток 1
+  08_invoice_ocr_errors: попыток 1
+  09_contradictions: попыток 1
+  10_unknown_letter: попыток 1
+
+Поле                  Точность   Верно  Галлюц.  Пропуск  Неверно
+-----------------------------------------------------------------
+doc_type                  90%    9/10         0        0        1
+supplier_name             90%    9/10         1        0        0
+supplier_bin             100%   10/10         0        0        0
+doc_number               100%   10/10         0        0        0
+doc_date                  80%    8/10         0        2        0
+currency                  20%    2/10         0        8        0
+total_amount             100%   10/10         0        0        0
+vat_amount               100%   10/10         0        0        0
+line_items.qty            73%    8/11         0        3        0
+line_items.price         100%   11/11         0        0        0
+-----------------------------------------------------------------
+ГАЛЛЮЦИНАЦИИ (заполнено, а в эталоне null): 1
+ПРОПУСКИ     (null, а в эталоне значение):  13
+Неверные значения (оба заполнены):          1
+  без grounding было: галлюцинаций 1, пропусков 11, неверных 3
+
+Позиции: эталон 17, найдено 13, полностью верно 8, лишних (выдуманных) 2, пропущено 6
+Предупреждения: противоречие отмечено в 4/4 документов, где оно есть; лишние предупреждения в 3 документах
+Валидация: документов 10, повторных запросов 0, fallback (ответ так и не прошёл схему) 0
+
+Расхождения по документам:
+  01_invoice_almaty_trade: 
+    currency: missed (эталон=KZT, ответ=None)
+  02_offer_digital_solutions: 
+    currency: missed (эталон=KZT, ответ=None)
+  03_kokzhiek_kz_ru_ocr: 
+    doc_date: missed (эталон=2026-10-09, ответ=None)
+    currency: missed (эталон=KZT, ответ=None)
+    line_items.qty: missed (эталон=1.0, ответ=None)
+  04_invoice_usd_buyer_bin: 
+    currency: missed (эталон=USD, ответ=None)
+  05_act_missing_fields: 
+    позиция пропущена: Настройка локальной сети в офисе
+    позиция пропущена: Монтаж системы видеонаблюдения
+  06_invoice_amount_in_words: 
+    currency: missed (эталон=KZT, ответ=None)
+    позиция пропущена: Изготовление визиток (1000 шт.)
+    позиция пропущена: Печать баннера 3х6 м
+  07_offer_kz_ru_mixed: 
+    doc_date: missed (эталон=2026-11-14, ответ=None)
+    currency: missed (эталон=EUR, ответ=None)
+    позиция пропущена: Кофемашина
+    позиция пропущена: Фильтр для воды
+    лишняя позиция: Кофе машинасы
+    лишняя позиция: Сүзгі
+  08_invoice_ocr_errors: 
+    currency: missed (эталон=KZT, ответ=None)
+    line_items.qty: missed (эталон=12.0, ответ=None)
+    line_items.qty: missed (эталон=100.0, ответ=None)
+  09_contradictions: 
+    currency: missed (эталон=KZT, ответ=None)
+  10_unknown_letter: 
+    doc_type: wrong (эталон=unknown, ответ=invoice)
+    supplier_name: hallucinated (эталон=None, ответ=ТОО «Медиа Плюс»)
+
+Подробный отчёт: reports\eval_qwen3_8b_20261118_185535.json
