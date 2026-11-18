@@ -1,5 +1,3 @@
-"""LLM-клиенты. Протокол LLMClient позволяет подменить реальный вызов кешем или фейком в тестах."""
-
 import hashlib
 import json
 from pathlib import Path
@@ -11,9 +9,7 @@ from doc_extractor.config import Settings
 
 
 class LLMClient(Protocol):
-    def complete_json(self, system: str, user: str, json_schema: dict) -> str:
-        """Вернуть сырой текст ответа модели (ожидается JSON)."""
-        ...
+    def complete_json(self, system: str, user: str, json_schema: dict) -> str: ...
 
 
 class LLMCacheMiss(RuntimeError):
@@ -37,7 +33,7 @@ class OllamaClient:
                 {"role": "system", "content": system},
                 {"role": "user", "content": user},
             ],
-            format=json_schema,  # structured outputs: декодирование ограничено схемой
+            format=json_schema,
             options={"temperature": 0},
         )
         return response.message.content or ""
@@ -47,13 +43,6 @@ CacheMode = Literal["use", "refresh", "offline"]
 
 
 class CachedLLM:
-    """Кеш ответов на диске: ключ = sha256(модель, промпты, схема).
-
-    use     — брать из кеша, при промахе звать модель и сохранить;
-    refresh — всегда звать модель и перезаписать кеш;
-    offline — только кеш, промах = ошибка (eval без ключа API).
-    """
-
     def __init__(
         self, inner: LLMClient | None, model: str, cache_dir: Path, mode: CacheMode = "use"
     ) -> None:

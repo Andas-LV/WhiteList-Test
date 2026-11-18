@@ -16,8 +16,6 @@ VALID = json.dumps(
 
 
 class ScriptedLLM:
-    """Фейковая модель: отдаёт заранее заданные ответы и запоминает промпты."""
-
     def __init__(self, *responses: str) -> None:
         self.responses = list(responses)
         self.prompts: list[str] = []
@@ -40,7 +38,6 @@ def test_retry_after_invalid_json_and_bad_field() -> None:
     assert outcome.valid and outcome.attempts == 3
     assert "не является JSON" in outcome.errors[0]
     assert "supplier_bin" in outcome.errors[1]
-    # Ошибка валидации передаётся модели в повторном запросе
     assert "supplier_bin" in llm.prompts[2]
 
 

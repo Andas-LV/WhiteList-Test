@@ -1,15 +1,3 @@
-"""Grounding: каждое значение из ответа LLM должно находиться в исходном тексте.
-
-Принцип: модели не верим на слово. Если значение не удаётся найти в документе
-детерминированно — поле обнуляется, а в warnings пишется причина.
-Ложное null дешевле выдуманного значения (см. README).
-
-Уверенность (field_confidence) = min(самооценка модели, уровень подтверждения):
-  1.0 — значение найдено в тексте как есть;
-  0.7 — найдено только в записи прописью;
-  0.6 — найдено только после исправления OCR-искажений / частичное совпадение названия.
-"""
-
 from dataclasses import dataclass
 from datetime import date
 
@@ -34,8 +22,6 @@ ITEM_NAME_MIN_COVERAGE = 0.5
 
 @dataclass(frozen=True)
 class TextFacts:
-    """Всё, что можно детерминированно извлечь из текста."""
-
     text: str
     ocr_text: str
     numbers: set[float]
@@ -158,7 +144,7 @@ def ground(result: ExtractionResult, text: str) -> ExtractionResult:
         for field, level in levels.items()
         if field in SCALAR_FIELDS and (field == "doc_type" or getattr(data, field) is not None)
     }
-    data.warnings = list(dict.fromkeys(warnings))  # убрать дубли, сохранив порядок
+    data.warnings = list(dict.fromkeys(warnings))
     return data
 
 
@@ -180,7 +166,6 @@ def _ground_items(items: list[LineItem], facts: TextFacts, warnings: list[str]) 
 
 
 def _consistency_warnings(data: ExtractionResult, facts: TextFacts) -> list[str]:
-    """Арифметические проверки. Поля не меняют — только сообщают о противоречиях."""
     out: list[str] = []
     total, vat = data.total_amount, data.vat_amount
 

@@ -1,12 +1,3 @@
-"""Сравнение предсказаний с эталоном: точность по полям, галлюцинации и пропуски раздельно.
-
-Для каждого поля исход одного из четырёх видов:
-  correct      — совпало (в т.ч. оба null);
-  hallucinated — в эталоне null, а модель заполнила (выдумала);
-  missed       — в эталоне есть значение, а модель вернула null (пропустила);
-  wrong        — оба заполнены, но значения разные.
-"""
-
 from dataclasses import dataclass, field
 from typing import Any, Literal
 
@@ -65,7 +56,6 @@ def _overlap(a: str, b: str) -> float:
 def match_items(
     expected: list[LineItem], predicted: list[LineItem]
 ) -> tuple[list[tuple[LineItem, LineItem]], list[LineItem], list[LineItem]]:
-    """Жадное сопоставление позиций по названию. Возвращает (пары, пропущенные, лишние)."""
     scored = sorted(
         (
             (_overlap(e.name, p.name), i, j)
@@ -93,7 +83,7 @@ class DocResult:
     name: str
     valid: bool
     attempts: int
-    fields: dict[str, tuple[Status, Any, Any]]  # поле -> (статус, эталон, предсказание)
+    fields: dict[str, tuple[Status, Any, Any]]
     items_expected: int
     items_predicted: int
     items_correct: int

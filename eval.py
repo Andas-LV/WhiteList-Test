@@ -1,12 +1,3 @@
-"""Мини-eval: прогоняет data/docs/*.txt через пайплайн и сравнивает с data/expected/*.json.
-
-    uv run python eval.py                  # кеш + LLM при промахе
-    uv run python eval.py --cache offline  # только сохранённые ответы, без API
-    uv run python eval.py --cache refresh  # заново спросить модель
-
-Ответы модели кешируются в data/llm_cache/<модель>/ — поэтому eval воспроизводим без ключа.
-"""
-
 import argparse
 import dataclasses
 import json

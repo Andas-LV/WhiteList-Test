@@ -1,8 +1,3 @@
-"""CLI: doc-extractor path/to/doc.txt  (или текст через stdin).
-
-Код выхода: 0 — успешно, 2 — ответ LLM не прошёл валидацию (выведен fallback-JSON).
-"""
-
 import argparse
 import sys
 from pathlib import Path

@@ -1,5 +1,3 @@
-"""Настройки из переменных окружения / .env."""
-
 import os
 from dataclasses import dataclass
 

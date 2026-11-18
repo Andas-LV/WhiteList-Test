@@ -1,5 +1,3 @@
-"""Фиксированная схема выхода. Любой ответ LLM проходит через эту валидацию."""
-
 from datetime import date
 from enum import StrEnum
 
@@ -43,7 +41,6 @@ class ExtractionResult(BaseModel):
     warnings: list[str] = Field(default_factory=list)
 
 
-# Поля, по которым считается eval (точность / галлюцинации / пропуски)
 SCALAR_FIELDS: tuple[str, ...] = (
     "doc_type",
     "supplier_name",
